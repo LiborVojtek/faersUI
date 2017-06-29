@@ -28,12 +28,4 @@ function getDrugSideEffects($pathREST, $brandName, $date = 0){
 	return json_decode($curl_response);
 }
 
-function compareDrugsByName($a, $b){
-	
-}
-
-function sortDrugsInstances($drugs){
-	
-}
-
 ?>

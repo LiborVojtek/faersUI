@@ -1,8 +1,15 @@
 <?php
 
 function printDrugsList($drugs, $pageLimit){
-	echo 'Showing ' . $pageLimit . ' drugs from ' . count($drugs) . ' found.';
-	echo '<table><tr><th>Brand name▲</th><th>Substance name</th><th>Manufacturer name</th></tr>';
+	echo '<div class="row"><div class="col-md-4 offset-md-1 alert alert-success">Showing ' . $pageLimit . ' drugs from ' . count($drugs) . ' found.</div></div>';
+	echo '<table class="table table-striped table-bordered table-hover">
+			<tr>
+				<thead class="thead-inverse">
+					<th>Brand name▲</th>
+					<th>Substance name</th>
+					<th>Manufacturer name</th>
+				</thead>
+			</tr>';
 	foreach ($drugs as $drug){
 		//$brand_name = get_object_vars($drug)['brand_name'];
 		echo '<tr><td><a href="sideeffects.php?brandname=' . get_object_vars($drug)['brand_name'] . '">'
@@ -14,14 +21,45 @@ function printDrugsList($drugs, $pageLimit){
 }
 
 function printSideEffectsList($sideEffects, $pageLimit){
-	echo 'Showing ' . $pageLimit . ' sideeffects from ' . count($sideEffects) . ' found.';
-	echo '<table><tr><th>Side effect</th><th>Number of occurrences▼</th></tr>';
-	foreach ($sideEffects as $sideEffect){
-		//$brand_name = get_object_vars($drug)['brand_name'];
-		echo '<tr><td>'	. get_object_vars($sideEffect)['meddra_pt'] . '</td><td>'
-		. get_object_vars($sideEffect)['quantity'] . '</td><td></tr>';
+	
+	echo '<div class="row"><div class="col-md-4 offset-md-1 alert alert-success">Showing ' . $pageLimit . ' sideeffects from ' . count($sideEffects) . ' found.</div></div>';
+	echo '<table class="table table-striped table-bordered table-hover">
+			<tr>
+				<thead class="thead-inverse">
+					<th>Side effect</th>
+					<th>Number of occurrences▼</th>
+				</thead>
+			</tr>';
+	foreach ($sideEffects as $key => $value){
+		echo '<tr><td>'	. $key . '</td><td>'
+		. $value . '</td></tr>';
 	}
 	echo '</table>';
 }
+//Sorting unimplemented yet.
+/*
+function compareDrugsByNameAsc($a, $b){
+	
+}
 
+function compareDrugsByNameDesc($a, $b){
+	
+}
+
+function sortDrugs($drugs, $sortFunction){
+	usort($drugs, $sortFunction());
+}
+
+function compareSideEffectsByNameAsc($a, $b){
+	return strcmp($a, $b);
+}
+
+function compareSideEffectsByNameDesc($a, $b){
+	
+}
+
+function sortSideEffects($sideEffects, $sortFunction){
+	uksort($sideEffects, "compareSideEffectsByNameAsc");
+}
+*/
 ?>
