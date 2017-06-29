@@ -12,7 +12,7 @@ function printDrugsList($drugs, $pageLimit){
 			</tr>';
 	foreach ($drugs as $drug){
 		//$brand_name = get_object_vars($drug)['brand_name'];
-		echo '<tr><td><a href="sideeffects.php?brandname=' . get_object_vars($drug)['brand_name'] . '">'
+		echo '<tr><td><a href="sideeffects.php?brandname=' . str_replace(" ", "%20", get_object_vars($drug)['brand_name']) . '">'
 		. get_object_vars($drug)['brand_name'] . '</a></td><td>'
 		. get_object_vars($drug)['substance_name'] . '</td><td>'
 		. get_object_vars($drug)['manufacturer_name'] . '</td></tr>';
